@@ -76,23 +76,29 @@ getMatrix a b =
   in
     [row1, row2] ++ brows
 
+fillMatrix : List (List Char) -> List (List Char)
+fillMatrix m =
+  m
+
 makeDisplay : String -> String -> Html
 makeDisplay a b =
   let
     m = getMatrix a b
+    dm = fillMatrix m
     toCell letter = td [] [text <| toString letter]
     toRow = tr [] << List.map toCell
   in
-    table [] (List.map toRow m)
+    table [] (List.map toRow dm)
+
 
 -- STYLE
-
+(=>) = (,)
 myStyle : Attribute
 myStyle =
   style
-    [ ("width", "100%")
-    , ("height", "40px")
-    , ("padding", "10px 0")
-    , ("font-size", "2em")
-    , ("text-align", "center")
+    [ "width" => "50%"
+    , "height" => "40px"
+    , "padding" => "10px 0"
+    , "font-size" => "2em"
+    , "text-align" => "center"
     ]
