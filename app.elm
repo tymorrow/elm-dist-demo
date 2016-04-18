@@ -51,14 +51,14 @@ view address model =
         [ placeholder "Word 1"
         , value model.word1
         , on "input" targetValue (Signal.message address << Word1Update)
-        , myStyle
+        , inputStyle
         ]
         []
     , input
         [ placeholder "Word 2"
         , value model.word2
         , on "input" targetValue (Signal.message address << Word2Update)
-        , myStyle
+        , inputStyle
         ]
         []
     , div
@@ -227,7 +227,9 @@ makeDisplay topWord leftWord =
       getMatrix topWord leftWord
 
     toCell letter =
-      td [] [ text letter ]
+      td
+        [ tdStyle ]
+        [ text letter ]
 
     toRow =
       tr [] << List.map toCell
@@ -243,14 +245,24 @@ makeDisplay topWord leftWord =
   (,)
 
 
-myStyle : Attribute
-myStyle =
+inputStyle : Attribute
+inputStyle =
   style
-    [ "width" => "50%"
+    [ "width" => "100%"
     , "height" => "40px"
     , "padding" => "10px 0"
     , "font-size" => "2em"
     , "text-align" => "center"
+    ]
+
+
+tdStyle : Attribute
+tdStyle =
+  style
+    [ "width" => "25px"
+    , "height" => "25px"
+    , "text-align" => "center"
+    , "background-color" => "whitesmoke"
     ]
 
 
