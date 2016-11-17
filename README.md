@@ -1,3 +1,3 @@
-# elm-dist-demo
+# Elm Distance Demo (elm-dist-demo)
 
-An Elm application that computes the distance between two words.
+An Elm application that implements the Wagner-Fischer dynamic progrmaming algorithm to compute the Levenshtein distance between two words.
